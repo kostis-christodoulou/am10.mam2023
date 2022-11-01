@@ -1,8 +1,11 @@
-# https://github.com/wch/extrafont
-# install.packages("extrafont")
-library(extrafont)
-# for windows, you may have to install an older version 1.3.8 of Rttf2pt1 as follows
+# you  have to install an older version 1.3.8 of Rttf2pt1 as follows
 # remotes::install_version("Rttf2pt1", version = "1.3.8")
+
+# https://github.com/wch/extrafont
+library(Rttf2pt1)
+library(extrafont)
+
+
 
 library(tidyverse)
 library(patchwork)
@@ -12,11 +15,6 @@ font_import()
 
 
 # to get fonts from goole, go to https://fonts.google.com/ 
-# Windows: use skyfonts to download google fonts on your computer https://www.fonts.com/web-fonts/google 
-# if using skyfonts, point to the directory where google fonts live 
-# on my windows machine this is @
-font_import(paths="C:/Users/kchristodoulou/AppData/Roaming/Monotype/skyfonts-google")
-
 #if you use FontBase to get all Google fonts
 font_import(paths="C:/Users/kchristodoulou/FontBase")
 
