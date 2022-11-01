@@ -1,0 +1,369 @@
+---
+title: "Data Visualization: Session 3"
+author: "Your name goes here"
+date: "`r Sys.Date()`"
+output:
+    html_document:
+      number_sections: true
+      theme: flatly
+      highlight: zenburn
+      toc: yes
+      toc_depth: 2
+      toc_float:
+        collapsed: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r, load_libraries, include = FALSE}
+
+library(tidyverse) # the usual stuff: dplyr, readr, and other goodies
+library(lubridate)
+library(janitor) # clean_names()
+library(skimr)
+library(vroom)
+```
+
+# Introduction
+
+In this document I review tools that are used in data cleaning --the first step in data analysis-- using different libraries from R. The purpose of this document is to provide you a framework and a template for you to clean data when you start a data science project from raw data. 
+
+When you get a hold of a new data set, always fix column names first-- as a habit, I always pipe the dataframe to `janitor::clean_names()` 
+
+Then run a low cost function, such as `glimpse()` to take an initial look at the type of variables. 
+Next, I always apply `skimr::skim()` as this tells me variable types, highlights any missing values, provides numerical summaries for numerical variables, and also shows how the data are distributed.
+
+
+
+
+# Reading and initial investigation of data
+
+There are many functions you can use to upload data R, I prefer to save my data file in csv format to make sure it is compatible with all the programs ( eg., Excel, R, Python, Tableau). 
+
+```{r read-investigate}
+
+#read in the data and immediately use janitor::clean_names()
+
+# Returns names with only lowercase letters, with _ as a separator
+# Handles special characters and spaces
+# Appends numbers to duplicated names
+# Converts “%” to “percent” to retain meaning
+
+ppd_data <- read_csv(here::here("data","londonpp_epc.zip")) %>% 
+  janitor::clean_names()
+
+london_postcodes <-  read_csv(here::here("data","london_postcodes.zip")) %>% 
+    janitor::clean_names()
+
+glimpse(ppd_data)
+
+
+```
+
+# Initial data cleaning
+
+Before we start looking at the contents of the data, we need to remove duplicates if there are any. For this we use `dplyr::distinct()`
+
+Let us also look 
+```{r}
+
+# distinct function deletes all duplicate records except the first occurrence of an entry
+london_matched <- ppd_data %>% 
+  dplyr::distinct(postcode, address1, address2, address3, date, 
+                  .keep_all = TRUE) #.keep_all keeps all columns, otherwise only keeps columns in the distinct function
+
+# IS LBS in here?
+london_matched  %>% 
+  filter(postcode == "NW1 4SA")
+
+
+```
+
+
+
+# Technically correct data
+
+
+In this section I demonstrate how to convert raw data to technically correct data. I use functions from `janitor` and `hsmc` packages.
+
+With data that are technically correct, we understand a data set where each value:
+
+- can be directly recognized as belonging to a certain variable;
+- is stored in a data type that represents the value domain of the real-world variable. 
+- Text variable should be stored as text, numeric variable as a number and etc
+
+
+We would like to see 
+
+1. How many values are missing?
+1. Max and min of numerical values.
+1.  Names and distributions of categorical values.
+
+
+```{r check_data}
+
+# skim function provides more detailed summary of the data. #
+# As this is a large file, it will take a while to run
+london_matched %>%  
+  select(price, property_type, newbuild, freehold, county, type1, year) %>% # choose fewer variables, as it may crash your R if you try all
+  skimr::skim()
+```
+
+
+
+## Check categorical variables
+
+I prefer to start with categorical variables. We can investigate categorical data types using `dplyr::count()`. But first let us join the dataset with the postcdes dataframe.
+
+
+```{r join_with_postcodes}
+
+london_matched <- london_matched %>% 
+  left_join(london_postcodes, by="postcode") 
+```
+
+
+
+
+```{r categorical_data}
+
+#Let's take a look at property type
+london_matched %>% 
+  count(property_type, sort=TRUE) %>% 
+  mutate(perc = round(100*n/sum(n),2))
+
+
+#Let's take a look at the county
+london_matched %>% 
+  count(county.x, sort=TRUE) %>% 
+  mutate(perc = round(100*n/sum(n),2))
+
+#Let's take a look at the district
+london_matched %>% 
+  count(district.x, sort=TRUE) %>% 
+  mutate(perc = round(100*n/sum(n),2))
+
+#Let's take a look at postcode_district
+london_matched %>% 
+  count(postcode_district.x, sort=TRUE) %>% 
+  mutate(perc = round(100*n/sum(n),2))
+
+```
+
+
+
+## Check continuous variables
+
+Let's check if the prices column is "technically correct".
+
+```{r investigate_variables}
+
+#Use describe to see summary information about each column
+#Note that this function is much slower than glimpse
+
+london_matched %>% 
+  select(price) %>% 
+  skimr::skim()
+  
+  
+
+
+```
+
+what's the most expensive house? Let us have a quick look at the ten most expensive properties
+```{r}
+
+london_matched %>% 
+  slice_max(order_by=price, n=10) 
+```
+
+
+Let's take a closer look. First,  I produce a histogram
+
+```{r}
+
+
+ggplot(london_matched, aes(x=price)) + 
+  geom_histogram(binwidth=10000)+
+  scale_x_continuous(labels =scales::number)
+```
+
+
+It might be easier to see the distribution in log scale.
+```{r}
+ggplot(london_matched, aes(x=log(price))) + 
+  geom_histogram(binwidth=0.5)
+```
+
+Or we can just look at a reasonable range.
+
+```{r}
+
+ggplot(london_matched, aes(x=price)) + 
+  geom_histogram(binwidth=100000)+xlim(0,5000000)
+```
+
+
+## Other types
+
+Let's now look at other types of variables. First I consider postcodes. How can we check if the postcodes are valid?
+
+Remmeber we have joined or dataset them with a database for London postcodes. Let us see if we have any missing postcodes in our dataframe
+```{r}
+
+london_matched %>% 
+  count(postcode) %>% 
+  filter(is.na(postcode)) #there are about 5K houses with no potscodes
+
+```
+
+This didn't really address a lot of the issues because there are a lot of new building with recently formed postcodes that is not in my database. What should we do? 
+
+
+
+# Consistent data
+
+Now that we have a technically correct dataset we can now focus on making it "consistent". At this stage we handle
+
+a) Missing values
+
+b) Special values
+
+c) Errors
+
+d) Outliers
+
+We need to check three types of consistencies:
+
+i) In record: no contradictory information is stored in a single record 
+
+ii) Cross record: meaning that statistical summaries of different variables do not conflict with each other 
+
+iii) Cross-dataset consistency: Consistent with other datasets 
+
+In this case, we only have a single data set so I focus on i and ii.
+
+## Prices
+
+We have already seen that there are some houses with unrealistic prices; eg., 0 to 600 mil. The only way to check whether these are legitimate records is by looking at the details of these data sets. Let's take a look at the really expensive and really cheap places.
+
+```{r outlier_properties}
+
+expensive_houses <- london_matched %>% 
+  slice_max(order_by = price, n=50)
+
+cheap_houses <- london_matched %>% 
+  slice_min(order_by = price, n=50)
+
+
+```
+
+
+After spending sometime looking at the data, I realized that some of the data does not seem to be about residential properties. We also know "type 1=B" transactions are not really properties. 
+
+```{r property_types}
+
+#Only look at type1 == A
+london_matched <- london_matched %>%
+  filter(type1=="A")
+
+london_matched %>% 
+  count(type1)
+
+
+
+```
+
+Let's look at the box plot of the prices. Do you see any potential outliers?
+
+```{r}
+#Plot a boxplot log prices 
+ggplot(london_matched, aes(x=log(price))) + 
+  geom_boxplot()
+
+```
+
+Finally, if we want to determine whether a flat is in central location  or not, we can use `london_zone == 1` 
+```{r add central location}
+#Add central location indicator to data
+
+london_matched <- london_matched %>% 
+  mutate(
+    central_london = ifelse(london_zone.x==1, "central", "outer")
+  )
+
+```
+
+
+
+# Missing values
+
+I will demonstrate how to impute missing values using predictive mean matching (PMM). Predictive mean matching calculates the predicted value of target variable Y according to the specified imputation model. For each missing entry, the method forms a small set of candidate donors (typically with 3, 5 or 10 members) from all complete cases that have predicted values closest to the predicted value for the missing entry. One donor is randomly drawn from the candidates, and the observed value of the donor is taken to replace the missing value. The assumption is the distribution of the missing cell is the same as the observed data of the candidate donors.
+
+The details of the method along with `mice` package that implements it are explained in the following articles.
+
+https://cran.r-project.org/web/packages/mice/mice.pdf
+
+https://www.jstatsoft.org/article/view/v045i03
+
+
+```{r mice library, warning=FALSE, include = FALSE}
+
+#Load MICE (Multivariate Imputation by Chained Equations) and 
+#VIM (Visualization and Imputation of Missing Values)  packages 
+library(mice) 
+library(VIM)
+```
+
+```{r mice library -data, warning=FALSE}
+# Let's work with a subsample of the data. It helps with visualizations
+#I'll take 1000 samples
+set.seed(9549)
+sample_house_prices<-sample_n(london_matched,1000)
+
+#My main goal is to impute total_floor_area so let me only use relevant variables.
+sample_house_prices <- sample_house_prices %>% 
+  select(property_type, newbuild, freehold, current_energy_rating, total_floor_area, price) %>% 
+
+  mutate (price = price / 1e3)
+
+```
+
+## Visualizing missing data
+
+Next we take a look at the number of missing values for each feature.
+
+``` {r mice library visualize}
+#Let's look at missing variables
+md.pattern(sample_house_prices,rotate.names = T)
+```
+
+Top axis talks about variable name
+
+a) Blue colour means no missing value; red represents the missing value.
+
+b) Left axis is about the number of observations. So most observations are complete, i.e, no missing values. By adding numbers on the left axis, you should get a total number of rows.
+
+c) Bottom axis talks about the count of missing values in a particular variable.
+
+d) Right axis is the count of variables having missing values. It is also equal to the number of red checked cells in the corresponding row.
+
+
+
+Missing data may be due to chance (for example, if energy rating is not entered by chance) --referred to as missing completely at random (MCAR). In this case, the sample remains representative of the study population. Problems arise when missing data are not random (for example, if properties with lower prices are more likely to have a missing energy rating) -- referred to as Missing not at random (MNAR) (also known as nonignorable nonresponse). To test whether data is missing by chance , we can use the marginplot visualization.
+
+``` {r mice library visualize II}
+marginplot(sample_house_prices[c(6,5)])
+
+```
+
+In the sample data there are 366 properties with missing total floor area. Red dots in the horizontal axis show their distribution. Blue box plot is for properties that have total floor area. Is the total floor area MCAR?  
+
+
+## Imputing missing data
+
+`mice` function gives us the option to use various methods to impute missing variables. No matter how we approach imputing we will not be able to perfectly estimate missing data. However, we can check the impact of the missing data on our results. For example if we were trying to estimate  house prices, we can run, say, a linear regression model without missing data and then with missing values imputed. If the results agree we have confidence that our results are robust to missing data.
