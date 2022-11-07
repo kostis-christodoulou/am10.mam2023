@@ -20,5 +20,6 @@ Code and datafiles used in the AM10 course
 | 00     |Member x, member y |kostis-christodoulou |<https://github.com/>|<N/A>     | 2022-11-01 |
 | 11     |Vani Duggal, Mehak Khanna, Manon Pillot, Liyang Zhang, Tobias Delago |tobias-delago |<https://github.com/tobias-delago/am10_group11_project> |Coming soon...  | 2022-11-05 |
 | 12     | Shivant Maharaj, Andrew Robak, Anastasia Fu, Jaelyn Shi, Samarth Sharma, Vivian van Oosten | VivianvanOosten |<https://github.com/VivianvanOosten/am10_group12_project> |Coming soon...  | 2022-11-07 |
+| 06 | Jean Francois Peters, Sonakshi Gupta, Wybe Harms, Drishti Goyal, Zezhou Tang, Suzy Wang | drishtigoyal13 | <https://github.com/jpeters2023/group6_datavisproject> | Coming Sooner! | 2022-11-07|
 | 8    | Misha Aggarwal, Madalina Dumitrescu, Yung-Chieh Hsu, Wendy Li, Christoph Plachutta, Tianyi Zhang | madalinad28 |<https://github.com/madalinad28/am10-group8-football-project.git> |Coming soon...  | 2022-11-07 |
 | 10     |Lucia Cai, Neha Dagade, Piotr Rudniak, Gian Marco Serra, Mingqi Yin |qiuke_studies |<https://github.com/Qiuke-Studies/am10_group_project>| <N/A>     | 2022-11-05 |
