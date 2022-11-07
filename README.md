@@ -25,3 +25,4 @@ Code and datafiles used in the AM10 course
 | 10     |Lucia Cai, Neha Dagade, Piotr Rudniak, Gian Marco Serra, Mingqi Yin |qiuke_studies |<https://github.com/Qiuke-Studies/am10_group_project>| <N/A>     | 2022-11-05 |
 | 3     |Kathlyn Lee, Emilia Moskala, Juan Sanchez-Blanco, Sylvie Zheng, Jingye Fang, Ishaan Khetan |juansbg |https://github.com/juansbg/mam_g3_data_viz| <N/A>     | 2022-11-07 |
 | 09     |Emma Zurstrassen, Aneeka Agarwal, Fangchen Wang, Alberic Teisseire, Jason Huang, Vanshika Bhatia |jas0nh |https://github.com/jas0nh/am10_group9_project| <N/A>     | 2022-11-07 |
+| 04    | Jinying Luo, Laura Gehring, Naman Dhingra, Niklas Gaertner, Nithish Kumar Akula, Yuqiao Shi | nithishkumarakula | <https://github.com/nithishkumarakula/am10_final_project_4> | Great things take time.. | 2022-11-07
