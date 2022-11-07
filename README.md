@@ -23,3 +23,4 @@ Code and datafiles used in the AM10 course
 | 06 | Jean Francois Peters, Sonakshi Gupta, Wybe Harms, Drishti Goyal, Zezhou Tang, Suzy Wang | drishtigoyal13 | <https://github.com/jpeters2023/group6_datavisproject> | Coming Sooner! | 2022-11-07|
 | 8    | Misha Aggarwal, Madalina Dumitrescu, Yung-Chieh Hsu, Wendy Li, Christoph Plachutta, Tianyi Zhang | madalinad28 |<https://github.com/madalinad28/am10-group8-football-project.git> |Coming soon...  | 2022-11-07 |
 | 10     |Lucia Cai, Neha Dagade, Piotr Rudniak, Gian Marco Serra, Mingqi Yin |qiuke_studies |<https://github.com/Qiuke-Studies/am10_group_project>| <N/A>     | 2022-11-05 |
+| 3     |Kathlyn Lee, Emilia Moskala, Juan Sanchez-Blanco, Sylvie Zheng, Jingye Fang, Ishaan Khetan |juansbg |https://github.com/juansbg/mam_g3_data_viz| <N/A>     | 2022-11-07 |
