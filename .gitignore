@@ -1,6 +1,7 @@
 /work_in_progress
 /data/londonpp_epc.zip
 /data/london_postcodes.zip
+/data/osm_power_tmm
 
 # History files
 .Rhistory
