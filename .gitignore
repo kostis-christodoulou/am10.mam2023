@@ -2,6 +2,8 @@
 /data/londonpp_epc.zip
 /data/london_postcodes.zip
 /data/osm_power_tmm
+.DS_Store
+/data/.DS_Store
 
 # History files
 .Rhistory
