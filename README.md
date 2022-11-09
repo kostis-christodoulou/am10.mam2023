@@ -28,3 +28,4 @@ Code and datafiles used in the AM10 course
 | 04    | Jinying Luo, Laura Gehring, Naman Dhingra, Niklas Gaertner, Nithish Kumar Akula, Yuqiao Shi | nithishkumarakula | <https://github.com/nithishkumarakula/am10_final_project_4> | Great things take time.. | 2022-11-07
 | 01    | Dhruvi Mundra, Heng Jian Shun, Marta Wnek, Sharon Wenyu Xu, Xueying Liu, Alex Scheuer | ascheuer | <https://github.com/scheuer98/group1_vns/> | Rome wasn't built in a day | 2022-11-08 |
 | 13    | Athos Gyalui, Drishti Hoskote, San Kashyap, Amelia Przybyl, Mingyu Dai | iris-mingyudai | <https://github.com/iris-mingyudai/am10_group_13> | Coming soon... | 2022-11-08 |
+| 2    | Jefin Joseph, Alexandru Botorog, Betty Cao, Disha Javur, Gabriel Calandri | jefin-joseph | <https://github.com/jefin-joseph/am10_group2_project> | Coming soon... | 2022-11-08 |
