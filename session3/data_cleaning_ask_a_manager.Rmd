@@ -1,0 +1,156 @@
+---
+title: "Session 3 (Data Visualization): Cleaning Survey Data"
+author: "Your name goes here"
+date: "`r Sys.Date()`"
+output: 
+    html_document:
+      number_sections: true
+      highlight: zenburn
+      theme: flatly
+      toc: yes
+      toc_depth: 2
+      toc_float:
+        collapsed: false
+      fontsize: 10pt
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(lubridate)
+library(vroom)
+library(janitor)
+library(skimr)
+library(vroom)
+library(mice) 
+library(VIM)
+
+```
+
+# Exploring the Ask a Manager Survey Data
+
+## Introduction and learning outcomes
+
+The purpose of this exercise is to apply the data cleaning steps to a raw data set. In this (unassessed) mini-workshop you will transform raw data into technically correct data and then to consistent data.
+
+You have 30 minutes to complete the workshop. If you have any questions I will be in the main room. Please leave your breakout room to ask questions. You can return to your breakout room from the main room afterwards. We will discuss your findings after the break exercise. I will randomly choose a group to share their results.
+
+Where to start analyzing a raw data set.
+
+-   Transform data into technically correct data
+
+1.  Each column has the same type of data that is consistent with what data in that column represents.
+2.  Identify missing data.
+
+-   Transform technically correct data into consistent data
+
+1.  Handle missing values.
+2.  Handle special values (eg., NA, N/A, inf..)
+3.  Check for errors
+4.  Check for outliers (eg., age=150)
+5.  Check consistency between columns (eg., age=5, marital status=married)
+
+## Data
+
+The data file `ask_a_manager.zip` contains information extracted from the [Ask a Manager Survey](https://www.askamanager.org/2021/04/how-much-money-do-you-make-4.html). Every row represents an individual response
+
+# Load and investigate data
+
+
+```{r load_data}
+
+# read_csv() will read and unzip the data file
+ask_a_manager <- read_csv(here::here("data","ask_a_manager_2021.zip")) %>% 
+  janitor::clean_names() 
+
+#Now we can use other summary functions to have a more general idea about what is in the data
+glimpse(ask_a_manager)
+
+# always take a look at what's in the data first; skir::skim() is perhaps
+# the most important tool you have. It will take a while to run
+skimr::skim(ask_a_manager)
+
+
+```
+
+Make sure you understand what each variable represents. What units is each variable in (see above for column explanations)? Is data type of each column consistent with what you would expect?
+
+# Technically correct data
+
+In this step
+
+1. Remove empty columns and rows and duplicates.
+1. Check how many values are missing.
+1. Correct data types, if necessary
+1. Check min, max, and distribution of numerical values.
+1. Names and distributions (counts) of categorical values.
+1. Fix any additional irregularities.
+
+## Initial data cleaning
+
+Before we start looking at the contents of the data
+
+i)  Remove empty columns and rows.
+
+ii) Remove duplicates if there are any.
+
+iii) Then check for missing data
+
+```{r remove_empty}
+#Remove empty columns and rows
+ask_a_manager <- janitor::remove_empty(ask_a_manager, 
+                                       which = c("rows","cols"))
+
+#Check for duplicates
+dupes <- ask_a_manager %>% 
+  janitor::get_dupes()
+
+```
+
+> Exercise 1 i) Are there any empty rows/colums in the data? ii) How about duplicated data? What should we do about these data points?
+
+## Missing data
+
+We should first check the missing values in the data.
+
+To find the number of missing data points and for additional information we can use `skimr::skim()`
+
+```{r investigate_data, message=FALSE}
+
+skimr::skim(bbc_data)    
+
+
+#or use the md.pattern function from MICE package
+mice::md.pattern(ask_a_manager,rotate.names = T)
+```
+
+> Exercise 2: What columns have missing data? What other issues can you anticipate regarding the accuracy of the data?
+
+We will deal with missing data below let's clean the data first.
+
+## Data type conversion
+
+> Exercise 3: `dplyr::count()` for different countries
+
+How many countries are contained in the data? How many responses are from people in the US?
+
+```{r count_countries}
+
+ask_a_manager %>%
+  count(country, sort=TRUE)
+
+```
+
+
+> Exercise 5: Check the distribution of `annual_salary` using a box plot and a histogram. Are there any outliers?
+
+```{r check_distribution_annual_salary}
+
+
+```
+
+View the top 50 records that have the highest salary. What do you observe?
+
+```{r biggest_salaries}
+
+```

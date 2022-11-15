@@ -27,7 +27,7 @@ library(VIM)
 
 ```
 
-# Exploring BBC iPlayer streaming data
+# Exploring Covid data
 
 ## Data
 
@@ -58,42 +58,20 @@ Where to start analyzing a raw data set.
 4.  Check for outliers (eg., age=150)
 5.  Check consistency between columns (eg., age=5, marital status=married)
 
-## Data
 
-The data file `raw_bbc_data.zip` contains information extracted from the BBC iPlayer database. The dataset was created by choosing approximately 10000 random viewers who watched something on iPlayer in January and then recording their viewing behaviour until the end of February. This means that customers who did not watch in January will not be in the dataset. Every row represents a viewing event. For every viewing event (i.e., every row), we have the following information:
+# Inspect the data
 
-a)  user_id -- a unique identifier for the viewer
-
-b)  program_id and series_id -- these identify the program and the series that the program belongs to
-
-c)  the programme's genre (e.g., drama, factual, news, sport, comedy, etc)
-
-d)  the program duration in Excel time format (hh:mm:ss)
-
-e)  the streaming start date/time of the event (in an unusual format that Excel does not recognise)
-
-f)  how long the customer watched the program for (measured in milliseconds)
-
-g)  Streaming id -- a unique identifier per streaming event For example, if the same person watches the same program twice, there will be two records that will have the same user_id, program_id, series_id, genre, and programme_duration, but will differ on streaming_id and start_date.
-
-Given the way the data was created, during January the data is representative of what is watched on the iPlayer. After January the data is no longer representative as it is no longer a random sample of the people watching iPlayer content.
-
-# Load and investigate data
-
-Load the data.
 
 ```{r load_data}
 
-# read_csv() will read and unzip the data file
-bbc_data <- read_csv(here::here("data","raw_bbc_data.zip")) %>% 
-  janitor::clean_names() 
+
 
 #Now we can use other summary functions to have a more general idea about what is in the data
-glimpse(bbc_data)
+glimpse(covid_data)
 
 # always take a look at what's in the data first; skir::skim() is perhaps
 # the most important tool you have. It will take a while to run
-skimr::skim(bbc_data)
+skimr::skim(covid_data)
 
 
 ```
@@ -112,127 +90,3 @@ In this step
 1. Check min, max, and distribution of numerical values.
 1. Names and distributions (counts) of categorical values.
 1. Fix any additional irregularities.
-
-## Initial data cleaning
-
-Before we start looking at the contents of the data
-
-i)  Remove empty columns and rows.
-
-ii) Remove duplicates if there are any.
-
-iii) Then check for missing data
-
-```{r remove_empty}
-#Remove empty columns and rows
-originalData_process2 <- janitor::remove_empty(bbc_data, which = c("rows","cols"))
-
-#Check for duplicates
-dupes <- bbc_data %>% 
-  janitor::get_dupes(streaming_id,start_date_time)
-
-```
-
-> Exercise 1 i) Are there any empty rows/colums in the data? ii) How about duplicated data? What should we do about these data points?
-
-## Missing data
-
-We should first check the missing values in the data.
-
-To find the number of missing data points and for additional information we can use `skimr::skim()`
-
-```{r investigate_data, message=FALSE}
-
-skimr::skim(bbc_data)    
-
-
-#or use the md.pattern function from MICE package
-mice::md.pattern(bbc_data,rotate.names = T)
-```
-
-> Exercise 2: What columns have missing data? What other issues can you anticipate regarding the accuracy of the data?
-
-We will deal with missing data below let's clean the data first.
-
-## Data type conversion
-
-> Exercise 3: Are all the columns in the formats they are supposed to be?
-
-```{r data}
-glimpse(bbc_data) 
-```
-
-
-### Time viewed format
-
-Let's convert `time_viewed` and `program_duration` to minutes so that they use the same units.
-
-What units are they in the original data? Let's start with `time_viewed`.
-
-```{r convert_to_minutes}
-
-bbc_data %>% 
-  select(time_viewed) %>% 
-  skim()
-
-
-# Change it to minutes. Time viewed is given in milliseconds. Convert the view time to minutes. (1 minute is 60,000 miliseconds.)  
-bbc_data <- bbc_data %>% 
-  mutate(time_viewed_min = time_viewed/60000)
-
-```
-
-> Exercise 5: Check the distribution of time viewed using a box plot and a histogram. Are there any outliers?
-
-```{r check_distribution_time_viewed}
-
-
-```
-
-View the top 50 records that have the longest time viewed. What do you observe?
-
-```{r longest_time_viewed}
-
-```
-
-
-> Exercise 6: There were no missing values for program at the beginning but now there seems to be over 30,000 missing values. Why? Investigate.
-
-Check the distribution of programme duration.
-
-```{r check_program_duration}
-
-```
-
-View the top 50 records that have the longest programme duration. What do you observe?
-
-```{r distribution_program_duration}
-
-bbc_data %>% 
-  slice_max(order_by=programme_duration, n=50)
-
-
-
-```
-
-### Categorical variables
-
-```{r categorical_data}
-
-
-
-```
-
-> Exercise 7: There were no missing values for genre and seried_id but there seems to be a lot of data points missing these variables. Why? Investigate.
-
-> Exercise 8: There are data points with missing genre and some with "N/A". What should we do about these?
-
-# Consistent data
-
-## Time viewed and program duration
-
-> Exercise 9: What should we do about long view times and program durations?
-
-## Cross column consistency
-
-> Exercise 10: Are there any potential cross consistency issues in the data? Check for consistency!
