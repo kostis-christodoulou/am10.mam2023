@@ -24,7 +24,7 @@ library(skimr)
 library(vroom)
 library(mice) 
 library(VIM)
-
+library(countrycode)
 ```
 
 # Exploring the Ask a Manager Survey Data
@@ -117,7 +117,7 @@ To find the number of missing data points and for additional information we can 
 
 ```{r investigate_data, message=FALSE}
 
-skimr::skim(bbc_data)    
+skimr::skim(ask_a_manager)    
 
 
 #or use the md.pattern function from MICE package
@@ -138,6 +138,27 @@ How many countries are contained in the data? How many responses are from people
 
 ask_a_manager %>%
   count(country, sort=TRUE)
+
+```
+
+
+> Exercise 4: `countrycode::countrycode()` to fix different spellings of countries
+
+One of the most useful packages is `countrycode` as it can fix different speelings for countries. In our dataset, there was no drop-down menu to choose one's country in the survey,so respondents have written, e.g., United States, USA, U.S.A., US, etc. 
+
+```{r countrycode}
+
+ask_a_manager <- ask_a_manager %>%
+  mutate(clean_country = 
+           countrycode(country,
+                       origin = 'country.name',
+                       destination = 'country.name'
+                       ))
+
+# check how many clean_country entries you now have-- 
+# waht about the NAs?
+ask_a_manager %>% 
+  count(clean_country, sort=TRUE)
 
 ```
 

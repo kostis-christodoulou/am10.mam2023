@@ -78,7 +78,6 @@ skimr::skim(covid_data)
 
 Make sure you understand what each variable represents. What units is each variable in (see above for column explanations)? Is data type of each column consistent with what you would expect?
 
-Recall that our eventual goal is to estimate future usage of BBC iPlayer users. We will clean and process the data to prepare it for analysis.
 
 # Technically correct data
 
