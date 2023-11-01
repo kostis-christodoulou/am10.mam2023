@@ -1,6 +1,7 @@
 library(tidyverse)
 library(plotly)
 library(htmlwidgets)
+library(gapminder)
 
 gapminder2007 <- filter(gapminder, 
                          year == 2007)

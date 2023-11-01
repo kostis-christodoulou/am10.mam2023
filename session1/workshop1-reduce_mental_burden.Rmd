@@ -32,7 +32,6 @@ knitr::opts_chunk$set(
 
 ```{r libraries, include=FALSE}
 library(tidyverse)
-library(extrafont)
 library(vroom)
 library(ggtext)
 library(gapminder)
@@ -40,13 +39,21 @@ library(ggrepel)
 library(patchwork)
 library(gghighlight)
 library(skimr)
+library(showtext)
+
+font_add_google("Montserrat", "Montserrat")
+font_add_google("Ubuntu", "Ubuntu")
+font_add_google("Oswald", "Oswald")
+font_add_google("Lato", "Lato")
+
+## Automatically use showtext to render text for future devices
+showtext_auto()
+
 
 # remotes::install_github("kjhealy/nycdogs")
 library(nycdogs)
 library(sf) # for geospatial visualisation
 
-loadfonts(device="win")
-# loadfonts(device="pdf") if you have a mac
 
 ```
 
@@ -58,8 +65,7 @@ loadfonts(device="win")
 4. Use the variable you just created in the `fill` aesthetic of the ggplot call
 5. Finally, use `scale_fill_manual()` to add the fill colours grey70 = #B3B3B3 for the background, and tomato = #FF6347 to higlights. my colours <- c("#B0B0B0D0", "#D55E00D0")`.
 
-```{r, emperors, eval=FALSE}
-# make sure you remove eval=FALSE before knitting the document
+```{r, emperors}
 
 # source of data https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-08-13
 url <- "https://github.com/rfordatascience/tidytuesday/raw/master/data/2019/2019-08-13/emperors.csv"
@@ -111,8 +117,7 @@ emperor_killers %>%
 2. In the `mutate()` call, check if `country` is one of the countries in `some_countries`. If it's not, make the label an empty string (""),
 3. Add the text repel geom from ggrepel. Set the `label` aesthetic using the variable just created in `mutate()`
 
-```{r, gapminder_some_countries, eval = FALSE}
-# make sure you remove eval=FALSE before knitting the document
+```{r, gapminder_some_countries}
 
 set.seed(42)
 
@@ -392,7 +397,7 @@ This is to get you started on your own. You can install the relevant `nycdogs` p
 ```{r, nyc_dogs}
 
 # You can install nycdogs from GitHub with:
-# devtools::install_github("kjhealy/nycdogs")
+# remotes::install_github("kjhealy/nycdogs")
 
 # load the data
 library(nycdogs)
@@ -438,25 +443,53 @@ top_breeds_map %>% ggplot(mapping = aes(fill = pct)) +
 
 ```
 
-# On your own: Hopw do countries generate their energy?
+# On your own -- Hollywood Age Gap
 
-We saw in AM01 the[Cross-country Historical Adoption of Technology (CHAT) dataset](https://www.nber.org/research/data/cross-country-historical-adoption-technology) from The National Bureau of Economic Research (NBER). We want to look at the production mix for energy in countries around the world. You have to write a function (AM01 stuff) that takes as argument a country name, and produces a stacked area graph that shows energy mix since 2000. 
+The website https://hollywoodagegap.com is a record of *THE AGE DIFFERENCE IN YEARS BETWEEN MOVIE LOVE INTERESTS*. This is an informational site showing the age gap between movie love interests and the data follows certain rules:
+
+-   The two (or more) actors play actual love interests (not just friends, coworkers, or some other non-romantic type of relationship)
+-   The youngest of the two actors is at least 17 years old
+-   No animated characters
+
+The age gaps dataset includes "gender" columns, which always contain the values "man" or "woman". These values appear to indicate how the characters in each film identify and some of these values do not match how the actor identifies. We apologize if any characters are misgendered in the data!
+
+The following is a data dictionary of the variables used
+
+| variable           | class     | description                                                                                             |
+|:--------------|:--------------|:------------------------------------------|
+| movie_name         | character | Name of the film                                                                                        |
+| release_year       | integer   | Release year                                                                                            |
+| director           | character | Director of the film                                                                                    |
+| age_difference     | integer   | Age difference between the characters in whole years                                                    |
+| couple_number      | integer   | An identifier for the couple in case multiple couples are listed for this film                          |
+| actor_1_name       | character | The name of the older actor in this couple                                                              |
+| actor_2_name       | character | The name of the younger actor in this couple                                                            |
+| character_1_gender | character | The gender of the older character, as identified by the person who submitted the data for this couple   |
+| character_2_gender | character | The gender of the younger character, as identified by the person who submitted the data for this couple |
+| actor_1_birthdate  | date      | The birthdate of the older member of the couple                                                         |
+| actor_2_birthdate  | date      | The birthdate of the younger member of the couple                                                       |
+| actor_1_age        | integer   | The age of the older actor when the film was released                                                   |
+| actor_2_age        | integer   | The age of the younger actor when the film was released                                                 |
+
+```{r}
+
+age_gaps <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-02-14/age_gaps.csv')
 
 
 ```
-    geom_area(color="grey90", 
-              alpha = 0.5,
-              position = "fill")+ # so you get to 100%
-```
 
+How would you explore this data set? Here are some ideas of tables/ graphs to help you with your analysis
 
-```{r, energy}
+-   How is `age_difference` distributed? What's the 'typical' `age_difference` in movies?
 
-energy <- vroom::vroom(here::here("data/energy.csv"))
+-   The `half plus seven\` rule. Large age disparities in relationships carry certain stigmas. One popular rule of thumb is the [half-your-age-plus-seven](https://en.wikipedia.org/wiki/Age_disparity_in_sexual_relationships#The_.22half-your-age-plus-seven.22_rule) rule. This rule states you should never date anyone under half your age plus seven, establishing a minimum boundary on whom one can date. In order for a dating relationship to be acceptable under this rule, your partner's age must be:
 
-skim(energy)
+$$\frac{\text{Your age}}{2} + 7 < \text{Partner Age} < (\text{Your age} - 7) * 2$$ How frequently does this rule apply in this dataset?
 
-```
+-   Which movie has the greatest number of love interests?
+-   Which actors/ actresses have the greatest number of love interests in this dataset?
+-   Is the mean/median age difference staying constant over the years (1935 - 2022)?
+-   How frequently does Hollywood depict same-gender love interests?
 
 
 # On your own: Coffee ratings

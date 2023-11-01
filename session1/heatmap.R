@@ -7,7 +7,7 @@ library(wbstats)
 
 internet <- wb_data(country = "countries_only", 
                       indicator = "IT.NET.USER.ZS", 
-                      start_date = 1995, end_date = 2017)
+                      start_date = 1995, end_date = 2021)
 
 glimpse(internet)
 

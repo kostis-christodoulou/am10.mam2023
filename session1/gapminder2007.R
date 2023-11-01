@@ -1,9 +1,15 @@
 library(tidyverse)
 library(gapminder)
-library(extrafont)
+library(showtext)
 library(ggrepel)
 
-loadfonts(device="win")
+## Loading Google fonts (https://fonts.google.com/)
+font_add_google("Montserrat", "Montserrat")
+font_add_google("Ubuntu", "Ubuntu")
+font_add_google("Fira Sans Condensed", "Fira")
+
+## Automatically use showtext to render text for future devices
+showtext_auto()
 
 gapminder %>% 
   filter(year == 2007) %>% 
@@ -15,8 +21,10 @@ gapminder %>%
     colour = "white",
     fill = "#001e62"
   )+
-  geom_text_repel(aes(label=country))+
+  geom_text_repel(aes(label=country),
+                  family="Montserrat")+
   theme_minimal()+
+  theme(text=element_text(size=18, family="Ubuntu"))+
   theme(panel.grid.minor = element_blank())+
   labs(
     title = "Gapminder 2007: Life expectancy vs GDP per capita",
@@ -45,14 +53,21 @@ gapminder %>%
     colour = "white",
     fill = "#001e62"
   )+
-  geom_text_repel(aes(label=label))+
+  geom_text_repel(aes(label=label),
+                  family = "Fira",
+                  size = 5)+
   theme_minimal()+
   theme(panel.grid.minor = element_blank())+
   labs(
     title = "Gapminder 2007: Life expectancy vs GDP per capita",
     x = "log(GDP per capita)",
     y = "Life Expectancy"
-  )
+  )+
+  theme(
+    plot.title.position = "plot",
+    plot.title = element_textbox_simple(size=16,
+                                        family = "Montserrat"),
+    legend.position = "none") 
 
 
 # We can define a base plot

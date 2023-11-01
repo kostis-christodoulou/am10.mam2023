@@ -41,6 +41,9 @@ my_route <- mb_directions(
   
 )
 
+glimpse(my_route)
+
+
 leaflet(my_route) %>%
   addMapboxTiles(style_id = "light-v9",
                  username = "mapbox") %>%

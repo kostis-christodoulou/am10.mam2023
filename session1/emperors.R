@@ -1,15 +1,21 @@
 library(tidyverse)
 library(vroom)
-library(extrafont)
+library(showtext)
 library(ggtext)
 
-loadfonts(device="win")
+font_add_google("Montserrat", "Montserrat")
+font_add_google("Ubuntu", "Ubuntu")
+font_add_google("Oswald", "Oswald")
+font_add_google("Lato", "Lato")
+
+## Automatically use showtext to render text for future devices
+showtext_auto()
 
 # source of data https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-08-13
 url <- "https://github.com/rfordatascience/tidytuesday/raw/master/data/2019/2019-08-13/emperors.csv"
 emperors <- vroom(url)
 
-skimr::skim(emperors)
+glimpse(emperors)
 
 # Plot 1
 emperors %>%

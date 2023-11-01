@@ -1,16 +1,12 @@
 library(tidyverse)
 library(lubridate)
-bikes <- vroom::vroom("data/londonBikes.csv") 
 
-# from london_bikes data, that has avg_temp
-bikes <- vroom::vroom("londonBikes.csv")%>% 
-  mutate(date = dmy(date),
-         year = year(date))
+bikes <- vroom::vroom("data/london_bikes.csv") 
 
 # from london_bikes data, that contains avg_temp
 bikes %>% 
   filter(year == 2019 ) %>% 
-  ggplot(aes(x = date, y = avg_temp)) +
+  ggplot(aes(x = date, y = mean_temp)) +
   geom_line() +
   geom_smooth() +
   labs(

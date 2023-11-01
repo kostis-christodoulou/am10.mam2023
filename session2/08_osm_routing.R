@@ -8,9 +8,8 @@ library(mapview)
 
 trip <- route(
   from = "London Business School",
-  to = "Athens",
-  route_fun = osrmRoute,
-  returnclass = "sf"
+  to = "Mumbai",
+  route_fun = osrmRoute
 )
 
 

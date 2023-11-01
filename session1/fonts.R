@@ -1,15 +1,19 @@
 library(tidyverse)
-library(patchwork)
 library(showtext)
+library(patchwork)
 
-
+## Loading Google fonts (https://fonts.google.com/)
 font_add_google("Montserrat", "Montserrat")
 font_add_google("Ubuntu", "Ubuntu")
 font_add_google("Oswald", "Oswald")
 font_add_google("Rock Salt", "Rock Salt")
 
+## Automatically use showtext to render text for future devices
 showtext_auto()
 
+## Tell showtext the resolution of the device,
+## only needed for bitmap graphics. Default is 96
+showtext_opts(dpi = 96)
 
 
 plot <- 
