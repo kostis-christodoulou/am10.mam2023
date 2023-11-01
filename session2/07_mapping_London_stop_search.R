@@ -26,11 +26,11 @@ st_geometry(london_wards_sf)
 london_wgs84 <-  london_wards_sf %>% 
   st_transform(4326) # transfrom CRS to WGS84, latitude/longitude
 
+# Data source https://data.police.uk/data/
 
-london_wgs84$geometry
 
 
-sep21 <- read_csv(here("data/stop-search/2021-09-metropolitan-stop-and-search.csv")) %>% 
+sep22 <- read_csv(here("data/stop-search/2022-09-metropolitan-stop-and-search.csv")) %>% 
   clean_names() %>% 
   
   # rename longitude/latitude to lng/lat, as this is how they are used in leaflet
@@ -44,7 +44,7 @@ which_searches <- c("Controlled drugs", "Offensive weapons","Stolen goods" )
 which_ages <- c("10-17", "18-24","25-34", "over 34")
 which_ethnicity <- c("White", "Black", "Asian")
 
-sep21_offence <- sep21 %>% 
+sep22_offence <- sep22 %>% 
   
   # filter out stop-and-search where no further action was taken
   filter(outcome != "A no further action disposal") %>% 
@@ -68,20 +68,20 @@ sep21_offence <- sep21 %>%
                                             c("White", "Black", "Asian"))
   )
 
-glimpse(sep21_offence)
+glimpse(sep22_offence)
 
 # NB: make sure to transform to a  common CRS. 
 # Here we retrieve and apply the CRS of london_wgs84 
-sep21_offence_sf <-  st_as_sf(sep21_offence, 
+sep22_offence_sf <-  st_as_sf(sep22_offence, 
                               coords=c('lng', 'lat'), 
                               crs=st_crs(london_wgs84))
 
 # Alternatively, you can explicitly set the CRS to, e.g, 4326, or WGS84 
-sep21_offence_sf <-  st_as_sf(sep21_offence, 
+sep22_offence_sf <-  st_as_sf(sep22_offence, 
                               coords=c('lng', 'lat'), 
                               crs=4326)
 
-glimpse(sep21_offence_sf)
+glimpse(sep22_offence_sf)
 
 
 ggplot() +
@@ -90,14 +90,14 @@ ggplot() +
   
   # add points from stop-and-search shapefile
   geom_sf(
-    data = sep21_offence_sf, aes(fill = object_of_search), 
+    data = sep22_offence_sf, aes(fill = object_of_search), 
     color = "white", size = 1.5, alpha = 0.7, shape = 21,
     show.legend = FALSE
   ) + 
   theme_minimal()+
   coord_sf(datum = NA) + #remove coordinates
   facet_wrap(~object_of_search) +
-  labs(title = "Locations of Stop&Search in London Sep 2021") +
+  labs(title = "Locations of Stop&Search in London Sep 2022") +
   hrbrthemes::theme_ft_rc(grid="", strip_text_face = "bold") +
   theme(axis.text = element_blank()) +
   theme(strip.text = element_text(color = "white"))+
@@ -109,14 +109,14 @@ ggplot() +
   geom_sf(
     data = london_wgs84, fill = "#3B454A", size = 0.125, colour = "#b2b2b277" ) +
   geom_sf(
-    data = sep21_offence_sf, aes(fill = object_of_search), 
+    data = sep22_offence_sf, aes(fill = object_of_search), 
     color = "white", size = 1.5, alpha = 0.7, shape = 21,
     show.legend = FALSE
   ) + 
   coord_sf(datum = NA) +
   facet_grid(officer_defined_ethnicity ~ object_of_search)+
   labs(
-    title = "Locations of Stop&Search in London Sep 2021"
+    title = "Locations of Stop&Search in London Sep 2022"
   ) +
   theme_ft_rc(grid="", strip_text_face = "bold") +
   theme(axis.text = element_blank()) +
@@ -128,7 +128,7 @@ ggplot() +
 london_wgs84 <- london_wgs84 %>%
   mutate(count = lengths(
     st_contains(london_wgs84, 
-                sep21_offence_sf))) 
+                sep22_offence_sf))) 
 
 
 ggplot(data = london_wgs84, aes(fill = count)) +
@@ -157,3 +157,4 @@ london_wgs84  %>%
                    legend = TRUE,
                    col.regions = inferno(n = 14),
                    layer.name = "Cases per ward")
+

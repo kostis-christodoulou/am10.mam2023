@@ -1,10 +1,15 @@
 library(tidyverse)
 library(sf)
 library(here)
-library(extrafont)
 library(ggtext)
+library(showtext)
+library(ggrepel)
 
-loadfonts(device="win")
+## Loading Google fonts (https://fonts.google.com/)
+font_add_google("Montserrat", "Montserrat")
+font_add_google("Ubuntu", "Ubuntu")
+font_add_google("Fira Sans Condensed", "Fira")
+
 
 # you must try to recreate
 # 1. session2_challenge.png (a static image where you have to use a shapefile and country results)
