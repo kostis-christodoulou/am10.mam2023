@@ -2,8 +2,6 @@ library(tidyverse)
 library(vroom)
 library(here)
 
-# to get the data as of Nov 14, 2021, just read the csv saved in the data folder
-covid_data <- vroom(here::here("data", "covid_data.csv"))  
   
 # if you want to get an up-to-date version, run the following lines
 url <- "https://covid.ourworldindata.org/data/owid-covid-data.csv"
@@ -21,4 +19,6 @@ fubar %>%
   select(location, date, total_cases, total_days) %>% 
   filter(location %in% c("France", "Italy", "United Kingdom" )) %>% 
   ggplot(aes(x=total_days, y= total_cases, colour=location))+
-  geom_line()
+  geom_line() +
+  theme_bw() +
+  scale_y_continuous(labels = scales::number)

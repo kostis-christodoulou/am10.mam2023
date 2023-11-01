@@ -53,7 +53,7 @@ There are many functions you can use to upload data R, I prefer to save my data 
 # Appends numbers to duplicated names
 # Converts “%” to “percent” to retain meaning
 
-ppd_data <- read_csv(here::here("data","londonpp_epc.zip")) %>% 
+ppd_data <- read_csv(here::here("data","london-pp-epc.csv.zip")) %>% 
   janitor::clean_names()
 
 london_postcodes <-  read_csv(here::here("data","london_postcodes.zip")) %>% 
