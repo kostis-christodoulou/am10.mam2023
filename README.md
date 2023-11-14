@@ -18,4 +18,5 @@ Code and datafiles used in the AM10 course
 | Study Group   | SG Members           |Github ID                      |Github Repo for final project        | URL address for final project       |Date Added     |  
 |:--------------|:---------------------|:------------------------------------------------------|:-----------------------|:-------------------------------------|:-----------------------| 
 | 00     |Member x, member y |kostis-christodoulou |<https://github.com/>|<N/A>     | 2023-11-01 |
+| 12     |Pierre Delfosse, Yixuan Li, Michael Mulianto, Raphael Toth, Jiarui Wang, Devang Mehta |Madikan |am10-mam2024-world-happiness |<https://github.com/Madikan/am10-mam2024-world-happiness>| 2023-11-14 |
 
