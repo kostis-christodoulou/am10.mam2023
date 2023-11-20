@@ -18,4 +18,5 @@ Code and datafiles used in the AM10 course
 | Study Group   | SG Members           |Github ID                      |Github Repo for final project        | URL address for final project       |Date Added     |  
 |:--------------|:---------------------|:------------------------------------------------------|:-----------------------|:-------------------------------------|:-----------------------| 
 | 00     |Member x, member y |kostis-christodoulou |<https://github.com/>|<N/A>     | 2023-11-01 |
+| 13     |Marti Garriga Marsans, Thomas Tyteca, Yihua Chan, Yanjun He, Saumya Srivastava, Zongqiang Lian |martigarriga11 |<https://github.com/martigarriga11/am10_group13>|<N/A>     | 2023-11-20 |
 
