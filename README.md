@@ -19,3 +19,5 @@ Code and datafiles used in the AM10 course
 |:--------------|:---------------------|:------------------------------------------------------|:-----------------------|:-------------------------------------|:-----------------------| 
 | 00     |Member x, member y |kostis-christodoulou |<https://github.com/>|<N/A>     | 2023-11-01 |
 
+| 05     |adhika Taneja, Juliette Larmuseau, Svenja Nitschke, Yaoming Jiang, Swarnim Mudaliar, Albert Xu |radhikataneja01 |<https://github.com/radhikataneja01/am10_aut23_finalproject>|<https://github.com/radhikataneja01/am10_aut23_finalproject/blob/main/Group5_Final.rmd>     | 2023-21-01 |
+
