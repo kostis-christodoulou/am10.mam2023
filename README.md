@@ -18,4 +18,4 @@ Code and datafiles used in the AM10 course
 | Study Group   | SG Members           |Github ID                      |Github Repo for final project        | URL address for final project       |Date Added     |  
 |:--------------|:---------------------|:------------------------------------------------------|:-----------------------|:-------------------------------------|:-----------------------| 
 | 00     |Member x, member y |kostis-christodoulou |<https://github.com/>|<N/A>     | 2023-11-01 |
-
+| 02     |Ann-Kathrin Krainer, Alex Navarro Alberti, Krishna Chauhan, Majd El Hassan, Yifang Zhou, Nick Chen|alexnavarroal |<[https://github.com/](https://github.com/alexnavarroal/data_visualisation_group_2/tree/main)https://github.com/alexnavarroal/data_visualisation_group_2/tree/main>|<N/A>     | 2023-11-21 |
