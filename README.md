@@ -18,4 +18,4 @@ Code and datafiles used in the AM10 course
 | Study Group   | SG Members           |Github ID                      |Github Repo for final project        | URL address for final project       |Date Added     |  
 |:--------------|:---------------------|:------------------------------------------------------|:-----------------------|:-------------------------------------|:-----------------------| 
 | 00     |Member x, member y |kostis-christodoulou |<https://github.com/>|<N/A>     | 2023-11-01 |
-| 08     |Aditya Raute, Jiyai (Allison) Li, Gunin Singh, Eytan Ouaknine, Wendy Cheng, Sebastian Oliver |kostis-christodoulou |[Repo with Rproj file](https://github.com/adityaraute/am10-MAM2023-Group8)|<N/A>     | 2023-11-20 |
+| 08     |Aditya Raute, Jiyai (Allison) Li, Gunin Singh, Eytan Ouaknine, Wendy Cheng, Sebastian Oliver |adityaraute |[Repo with Rproj file](https://github.com/adityaraute/am10-MAM2023-Group8)|<N/A>     | 2023-11-20 |
