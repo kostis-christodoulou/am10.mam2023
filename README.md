@@ -18,4 +18,5 @@ Code and datafiles used in the AM10 course
 | Study Group   | SG Members           |Github ID                      |Github Repo for final project        | URL address for final project       |Date Added     |  
 |:--------------|:---------------------|:------------------------------------------------------|:-----------------------|:-------------------------------------|:-----------------------| 
 | 00     |Member x, member y |kostis-christodoulou |<https://github.com/>|<N/A>     | 2023-11-01 |
+| 03     |Dan Thompson, Xi Chen, Alvaro Romero, Mahah Sadique, Guangbin Yu and Marie Dujardin | MarieDujardin2000 | <[https://github.com/](https://github.com/MarieDujardin2000/AM10_Group_3)https://github.com/MarieDujardin2000/AM10_Group_3> | <[https://github.com/](https://github.com/MarieDujardin2000/AM10_Group_3)https://github.com/MarieDujardin2000/AM10_Group_3>  | 2023-11-21 |
 
