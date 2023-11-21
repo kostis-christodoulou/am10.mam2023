@@ -18,4 +18,5 @@ Code and datafiles used in the AM10 course
 | Study Group   | SG Members           |Github ID                      |Github Repo for final project        | URL address for final project       |Date Added     |  
 |:--------------|:---------------------|:------------------------------------------------------|:-----------------------|:-------------------------------------|:-----------------------| 
 | 00     |Member x, member y |kostis-christodoulou |<https://github.com/>|<N/A>     | 2023-11-01 |
+| 15     |Mizrap Durakoglu, Ziyue Hua, Brandon Lau, Shrija Mittal, Alexander Skovbo  |kostis-christodoulou |<https://github.com/ShrijaMittal/DataVisualization_Group15>|<N/A>     | 2023-11-21 |
 
