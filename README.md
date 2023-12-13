@@ -29,5 +29,6 @@ Code and datafiles used in the AM10 course
 | 09     | Eric Wong, Hanna Bulyaki Krystal Shu, Nishant Singh, Pongpol Anuntasilpa, Andreas Hinderyckx | Den-Dre | https://github.com/Den-Dre/DataVisualisation | <N/A> | 2023-11-21 |
 | 10     |Ben Spertus, Emil Erne, Jing Zhou, Salome Corcos, Shengjie Shi, Vaani Rawat |bspertus, sehe99, JingZhou68, salomecorcos, jonathon0301, vaanicodes |https://github.com/vaanicodes/am10-finalproject.git|<N/A>     | 2023-11-21 |
 | 11     | Akash Bhakat, Alexander Wallace, Annie Do, Bill Fang, Sara Avdagic, Wenlong Cheok | wenlong47 | <https://github.com/wenlong47/Group11_Final_Project> | <https://github.com/wenlong47/Group11_Final_Project> | 2023-11-21 |
+| 12     |Pierre Delfosse, Yixuan Li, Michael Mulianto, Raphael Toth, Jiarui Wang, Devang Mehta |Madikan |am10-mam2024-world-happiness |<https://github.com/Madikan/am10-mam2024-world-happiness>| 2023-11-14 |
 | 13     |Marti Garriga Marsans, Thomas Tyteca, Yihua Chan, Yanjun He, Saumya Srivastava, Zongqiang Lian |martigarriga11 |<https://github.com/martigarriga11/am10_group13>|<N/A>     | 2023-11-20 |
 | 15     |Mizrap Durakoglu, Ziyue Hua, Brandon Lau, Shrija Mittal, Alexander Skovbo  |kostis-christodoulou |<https://github.com/ShrijaMittal/DataVisualization_Group15>|<N/A>     | 2023-11-21 |
