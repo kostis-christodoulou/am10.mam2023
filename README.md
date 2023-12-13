@@ -21,4 +21,5 @@ Code and datafiles used in the AM10 course
 | 03     |Dan Thompson, Xi Chen, Alvaro Romero, Mahah Sadique, Guangbin Yu and Marie Dujardin | MarieDujardin2000 | <[https://github.com/](https://github.com/MarieDujardin2000/AM10_Group_3)https://github.com/MarieDujardin2000/AM10_Group_3> | <[https://github.com/](https://github.com/MarieDujardin2000/AM10_Group_3)https://github.com/MarieDujardin2000/AM10_Group_3>  | 2023-11-21 |
 | 05     |adhika Taneja, Juliette Larmuseau, Svenja Nitschke, Yaoming Jiang, Swarnim Mudaliar, Albert Xu |radhikataneja01 |<https://github.com/radhikataneja01/am10_aut23_finalproject>|<https://github.com/radhikataneja01/am10_aut23_finalproject/blob/main/Group5_Final.rmd>     | 2023-21-01 |
 | 06     | Daniil Ennus,Alankrita Tewari, Barbara Merck, Paras Gupta, Sam Ma, Yiwen Feng |alankritatewari |<https://github.com/alankritatewari/data_viz_group6>| <https://github.com/alankritatewari/data_viz_group6/blob/main/GROUP%206%20FINAL%20ASSIGNMENT.Rmd> | 2023-11-21 |
-| 09     |Hanna, Andreas, Eric, Krystal, Nishant, Pongpol |kostis-christodoulou |<https://github.com/Den-Dre/DataVisualisation>|<N/A>     | 2023-11-08 
+| 09     | Eric Wong, Hanna Bulyaki Krystal Shu, Nishant Singh, Pongpol Anuntasilpa, Andreas Hinderyckx | Den-Dre | https://github.com/Den-Dre/DataVisualisation | <N/A> | 2023-11-21 |
+
