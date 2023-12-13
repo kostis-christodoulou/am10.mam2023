@@ -23,6 +23,6 @@ Code and datafiles used in the AM10 course
 | 05     |adhika Taneja, Juliette Larmuseau, Svenja Nitschke, Yaoming Jiang, Swarnim Mudaliar, Albert Xu |radhikataneja01 |<https://github.com/radhikataneja01/am10_aut23_finalproject>|<https://github.com/radhikataneja01/am10_aut23_finalproject/blob/main/Group5_Final.rmd>     | 2023-21-01 |
 | 06     | Daniil Ennus,Alankrita Tewari, Barbara Merck, Paras Gupta, Sam Ma, Yiwen Feng |alankritatewari |<https://github.com/alankritatewari/data_viz_group6>| <https://github.com/alankritatewari/data_viz_group6/blob/main/GROUP%206%20FINAL%20ASSIGNMENT.Rmd> | 2023-11-21 |
 | 09     | Eric Wong, Hanna Bulyaki Krystal Shu, Nishant Singh, Pongpol Anuntasilpa, Andreas Hinderyckx | Den-Dre | https://github.com/Den-Dre/DataVisualisation | <N/A> | 2023-11-21 |
+| 10     |Ben Spertus, Emil Erne, Jing Zhou, Salome Corcos, Shengjie Shi, Vaani Rawat |bspertus, sehe99, JingZhou68, salomecorcos, jonathon0301, vaanicodes |https://github.com/vaanicodes/am10-finalproject.git|<N/A>     | 2023-11-21 |
 | 11     | Akash Bhakat, Alexander Wallace, Annie Do, Bill Fang, Sara Avdagic, Wenlong Cheok | wenlong47 | <https://github.com/wenlong47/Group11_Final_Project> | <https://github.com/wenlong47/Group11_Final_Project> | 2023-11-21 |
 | 15     |Mizrap Durakoglu, Ziyue Hua, Brandon Lau, Shrija Mittal, Alexander Skovbo  |kostis-christodoulou |<https://github.com/ShrijaMittal/DataVisualization_Group15>|<N/A>     | 2023-11-21 |
-
