@@ -24,3 +24,4 @@ Code and datafiles used in the AM10 course
 | 09     | Eric Wong, Hanna Bulyaki Krystal Shu, Nishant Singh, Pongpol Anuntasilpa, Andreas Hinderyckx | Den-Dre | https://github.com/Den-Dre/DataVisualisation | <N/A> | 2023-11-21 |
 | 15     |Mizrap Durakoglu, Ziyue Hua, Brandon Lau, Shrija Mittal, Alexander Skovbo  |kostis-christodoulou |<https://github.com/ShrijaMittal/DataVisualization_Group15>|<N/A>     | 2023-11-21 |
 
+| 11     | Akash Bhakat, Alexander Wallace, Annie Do, Bill Fang, Sara Avdagic, Wenlong Cheok | wenlong47 | <https://github.com/wenlong47/Group11_Final_Project> | <https://github.com/wenlong47/Group11_Final_Project> | 2023-11-21 |
