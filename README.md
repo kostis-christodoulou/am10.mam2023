@@ -19,3 +19,4 @@ Code and datafiles used in the AM10 course
 |:--------------|:---------------------|:------------------------------------------------------|:-----------------------|:-------------------------------------|:-----------------------| 
 | 00     |Member x, member y |kostis-christodoulou |<https://github.com/>|<N/A>     | 2023-11-01 |
 | 05    |Swarnim Mudaliar, Yaoming Jiang, Albert Xu, Juliette Larmuseau, Radhika Taneja, Svenja Nitschke |Swarnim-Mudaliar |[<https://github.com/>](https://github.com/Swarnim-Mudaliar/am10-group-5-poster)https://github.com/Swarnim-Mudaliar/am10-group-5-poster|<N/A>     | 2023-11-01 |
+| 09     |Hanna, Andreas, Eric, Krystal, Nishant, Pongpol |kostis-christodoulou |<https://github.com/Den-Dre/DataVisualisation>|<N/A>     | 2023-11-08 
