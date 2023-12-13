@@ -18,6 +18,5 @@ Code and datafiles used in the AM10 course
 | Study Group   | SG Members           |Github ID                      |Github Repo for final project        | URL address for final project       |Date Added     |  
 |:--------------|:---------------------|:------------------------------------------------------|:-----------------------|:-------------------------------------|:-----------------------| 
 | 00     |Member x, member y |kostis-christodoulou |<https://github.com/>|<N/A>     | 2023-11-01 |
-
 | 05     |adhika Taneja, Juliette Larmuseau, Svenja Nitschke, Yaoming Jiang, Swarnim Mudaliar, Albert Xu |radhikataneja01 |<https://github.com/radhikataneja01/am10_aut23_finalproject>|<https://github.com/radhikataneja01/am10_aut23_finalproject/blob/main/Group5_Final.rmd>     | 2023-21-01 |
-
+| 09     |Hanna, Andreas, Eric, Krystal, Nishant, Pongpol |kostis-christodoulou |<https://github.com/Den-Dre/DataVisualisation>|<N/A>     | 2023-11-08 
