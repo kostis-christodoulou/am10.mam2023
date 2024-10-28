@@ -15,14 +15,13 @@ showtext_auto()
 # it uses the latest month available, which can be found using ukp_last_update().
 # I use LBS's address NW1 4SA which has lat/lon = 
 
-crime_data <- ukp_crime(lat = 51.52626, 
-                        lng = -0.16075)
+crime_data <- ukc_crime_coord(lat = 51.52626, 
+                        lng = -0.16075,
+                        date = "2023-07") %>% # to specify a month, otherwise returns last available month
+  mutate(longitude = as.numeric(longitude),
+         latitude = as.numeric(latitude))
 
 
-# to specify a month, use
-crime_data_date <- ukp_crime(lat = 51.52626, 
-                             lng = -0.16075,
-                             date = "2023-08")
 
 # types of crime
 crime_data %>%
@@ -83,15 +82,16 @@ point_fill <- colorFactor(palette = my_colours,
 crime_data %>%
   leaflet() %>%
   addProviderTiles(providers$CartoDB.Positron) %>% 
-  addCircleMarkers(lng = ~long, 
-                   lat = ~lat, 
+  addCircleMarkers(lng = ~longitude, 
+                   lat = ~latitude, 
                    radius = 3, 
                    color = ~point_fill(map_category), 
          #          fillOpacity = 0.99, 
                    popup = ~street_name,
-                   label = ~category)  %>%
+                   label = ~category) 
   
-  addLegend("bottomright", pal = point_fill, 
+  addLegend("bottomright", 
+            pal = point_fill, 
             values = ~map_category,
             title = "Category",
             opacity = 0.5)
