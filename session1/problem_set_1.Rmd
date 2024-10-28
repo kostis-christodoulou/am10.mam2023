@@ -47,7 +47,7 @@ font_add_google("Lato", "Lato")
 ## Automatically use showtext to render text for future devices
 showtext_auto()
 
-births_1994_2014 <- read_csv("data/births_1994_2014.csv") |> 
+births_1994_2014 <- read_csv(here::here("data/births_1994_2014.csv")) |> 
   janitor::clean_names() |> 
   mutate(
     full_date = make_date(year = year, 
