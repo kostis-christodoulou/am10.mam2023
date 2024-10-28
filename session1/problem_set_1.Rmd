@@ -1,0 +1,59 @@
+---
+title: "Problem set 1"
+author: "Yoour name goes here"
+output:
+  html_document:
+    theme: flatly
+    highlight: zenburn
+    number_sections: true
+    toc: yes
+    toc_float: yes
+---
+
+
+```{r, setup, echo=FALSE}
+knitr::opts_chunk$set(
+  message = FALSE, 
+  warning = FALSE, 
+  tidy=FALSE,     # display code as typed
+  size="small")   # slightly smaller font for code
+options(digits = 3)
+
+# default figure size
+knitr::opts_chunk$set(
+  fig.width=6.75, 
+  fig.height=6.75,
+  fig.align = "center"
+)
+```
+
+```{r}
+library(tidyverse)
+```
+
+
+# 1. Prepare the worst possible visualisation
+
+# 2. Stop and Search in London
+
+
+```{r load_data}
+data <- read_csv(here::here("data/stop-search/2022-09-metropolitan-stop-and-search.csv"))%>%
+janitor::clean_names() %>% #to remove spaces, upper case letters, etc. from variable names.
+
+ mutate(
+    
+    # just the date without hour info
+    date_no_hour = as.Date(date), 
+    
+    # get the year, month, etc
+    # just the date without hour info
+    date_no_hour = as.Date(date), 
+    # get the year, month, etc
+    year_ = year(date),
+    month_ = month(date),
+    month_name = month(date, label = TRUE, abbr = FALSE),
+    day_number = day(date),
+    weekday = wday(date, label = TRUE, abbr = FALSE)
+  )
+```
