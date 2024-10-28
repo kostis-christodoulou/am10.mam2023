@@ -7,7 +7,7 @@ library(leaflet)
 mb_access_token("pk.ey......", install = TRUE)
 
 # mb_isochrone
-walk_5min <- mb_isochrone("Sammy Ofer Centre",
+walk_5min <- mb_isochrone("Schlossplatz 1, Berlin",
                           profile = "walking",
                           time = 7)
 
@@ -18,7 +18,7 @@ leaflet(walk_5min) %>%
 
 
 # mb_isochrone + mapdeck interactive map
-isochrones <- mb_isochrone("NW1 4SA", 
+isochrones <- mb_isochrone("Schlossplatz 1, Berlin", 
                            time = c(5, 10, 20),
                            profile = "cycling") 
 
@@ -31,14 +31,15 @@ mapdeck(style = mapdeck_style("light")) %>%
 
 # routing
 my_route <- mb_directions(
-  origin = "NW1 4SA",
-  destination = "British Library",
-  profile = "walking",
+  origin = "Schlossplatz 1, Berlin",
+  destination = "British Library, London",
+  profile = "driving",
   steps = TRUE,
-# language = "en" #https://docs.mapbox.com/api/navigation/directions/#instructions-languages # en is the default option
-  language = "el-GR" #https://docs.mapbox.com/api/navigation/directions/#instructions-languages
+  language = "en" #https://docs.mapbox.com/api/navigation/directions/#instructions-languages # en is the default option
+  # language = "es" #https://docs.mapbox.com/api/navigation/directions/#instructions-languages # en is the default option
+  # language = "el-GR" #https://docs.mapbox.com/api/navigation/directions/#instructions-languages
+# language = "pl" #https://docs.mapbox.com/api/navigation/directions/#instructions-languages
 # language = "zh-CN" #https://docs.mapbox.com/api/navigation/directions/#instructions-languages
-  
 )
 
 glimpse(my_route)
@@ -53,9 +54,6 @@ leaflet(my_route) %>%
 my_route |> 
   summarise(total_distance = sum(distance),
             total_time = sum(duration))
-
-# Geocoding
-lbs <- mb_geocode("London Business School") 
 
 
 

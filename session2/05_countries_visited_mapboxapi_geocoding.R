@@ -16,6 +16,7 @@ countries_e628 <- countries_e628 %>%
   count(country, sort=TRUE)
 
 geocoded <- countries_e628 %>% 
+  distinct(country) |> 
   mutate(
     address_geo = purrr::map(country, mb_geocode) # the beauty of purrr:map()
   ) %>% 

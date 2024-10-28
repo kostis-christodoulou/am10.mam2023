@@ -3,7 +3,8 @@ library(osmdata)
 library(stplanr)
 library(mapview)
 
-#> Data: (c) OpenStreetMap contributors, ODbL 1.0 - http://www.openstreetmap.org/copyright
+#> Data: (c) OpenStreetMap contributors, 
+#> ODbL 1.0 - http://www.openstreetmap.org/copyright
 #> Routing: OSRM - http://project-osrm.org/
 
 trip <- route(

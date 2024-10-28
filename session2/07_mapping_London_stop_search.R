@@ -13,6 +13,7 @@ library(tmaptools)
 library(hrbrthemes)
 library(mapview)
 library(viridis)
+library(sf)
 
 #use sf::read_sf() to read in London Wards shapefile
 london_wards_sf <- read_sf(here("data/London-wards-2018_ESRI/London_Ward.shp"))
