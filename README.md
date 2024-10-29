@@ -1,3 +1,5 @@
+hello
+
 # am10.mam2024
 
 Code and datafiles used in the AM10 course
